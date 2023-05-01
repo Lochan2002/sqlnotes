@@ -1,0 +1,79 @@
+-- select * from rgm;
+-- update rgm SET address="Alampur" WHERE contact_no=7209;
+
+create table test( name2 varchar(30),collegename varchar(30) not null,subject1 varchar(30) not null,contact int not null, address varchar(30) not null);
+select * from test;
+insert into test select * from rgm;  -- this is used to copy the data from a table to new table in the same database
+create table test1(id int primary key not null, name varchar(30) not null,contact int not null,dept1 varchar(30) not null);
+INSERT INTO test1 select * from rgm.student;
+select * from test1;
+truncate table test1; -- used to delete the data not the table strucutre
+delete from test1 where id=106; -- it deletes the entire row
+drop table test1;
+alter table test1 rename column dept1 to dept; -- to rename the column name
+alter table test1 rename to student_details; -- to rename table name
+select * from student_details;
+
+create database sun;
+show databases;
+drop database sun; -- to delete the database or drop the database
+
+alter table student_details add address varchar(30); -- add new column
+update student_details set address="bangalore" where id=101; -- add data new column
+alter table student_details modify column address varchar(50); -- alter column datatype or size
+alter table student_details drop column address; -- drop particular column
+create table results(marks int not null );
+select * from results;
+insert into results values(98);
+insert into results values(96);
+insert into results values(84);
+insert into results values(75);
+select max(marks) from results; -- to know the maximum value in the column
+select avg(marks) from results; -- to get the avg 
+select sum(marks) from results; -- to get the sum of marks
+select sum(marks) as total from results; -- to change the column name in the output
+select count(marks) from results;
+
+EXERCISE:
+
+create database exercise;
+select * from customer;
+create table customer(id int primary key not null,name varchar(30) not null,city varchar(20) not null,grade int not null,saleman_id int not null);
+insert into customer values(1,"lochan","mpl",5,110),
+(2,"jaya","knl",4,108),
+(8,"ram","tpt",6,111),
+(7,"sita","bdl",8,103),(4,"lakshman","atp",3,107);
+insert into customer values(6,"anji","kdr",9,113)
+
+create database exercise;
+select * from customer;
+create table customer(id int primary key not null,name varchar(30) not null,city varchar(20) not null,grade int not null,saleman_id int not null);
+insert into customer values(1,"lochan","mpl",5,110),
+(2,"jaya","knl",4,108),
+(8,"ram","tpt",6,111),
+(7,"sita","bdl",8,103),(4,"lakshman","atp",3,107);
+insert into customer values(6,"anji","kdr",9,113);
+
+-- write a sql query to find out the details of the customer whose grad are above 100
+ select * from customer where grade>5;
+ -- write a sql query to find out the details of the customers whose are abve 5 and equal to 5
+ select * from customer where grade>=5;
+ 
+ select * from customer where grade>5 order by grade desc;
+
+select * from customer where city="bdl" and grade>5;
+
+select * from customer where city="mpl" or grade>5;
+
+select * from customer where city="mpl" or not grade>5;
+select city from customer where name like 'l%';
+
+CREATE TABLE SALESMAN1(ID INT PRIMARY KEY,NAME VARCHAR(20),CITY VARCHAR(20),COMMISSION FLOAT);
+INSERT INTO SALESMAN1 VALUES
+(200,"PRASANNA","KURNOOL",0.45),
+(201,"KEERTHI","NANDYAL",0.23),
+(202,"KAVYA","HYDERABAD",0.32),
+(203,"KEERTHANA","BANGALORE",0.43);
+SELECT * FROM SALESMAN1;
+SELECT * FROM SALESMAN1 WHERE COMMISSION BETWEEN 0.23 AND 0.43;
+select name from salesman1 where city like 'k%';
